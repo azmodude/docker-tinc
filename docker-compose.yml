@@ -1,0 +1,39 @@
+version: '3.3'
+
+services:
+  tinc:
+    image: azmo/docker-tinc
+    build:
+      context: .
+    hostname: tinc
+    environment:
+      RUN_USER: ${TINC_RUN_USER}
+      RUN_UID: ${TINC_RUN_UID}
+      RUN_GROUP: ${TINC_RUN_GROUP}
+      RUN_GID: ${TINC_RUN_GID}
+      TINC_DEBUG_LEVEL: ${TINC_DEBUG_LEVEL}
+      TINC_MASTER: ${TINC_MASTER}
+      TINC_NETWORK: ${TINC_NETWORK}
+      TINC_HOSTNAME: ${TINC_HOSTNAME}
+    network_mode: ${TINC_NETWORK_MODE:-host}
+    cap_add:
+      - NET_ADMIN
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    devices:
+      - ${TINC_INTERFACE}
+    restart: unless-stopped
+    volumes:
+      - ./${TINC_NETWORK}:/etc/tinc/${TINC_NETWORK}-config
+    healthcheck:
+      test: ${TINC_HEALTHCHECK}
+      interval: '60s'
+      retries: 3
+      timeout: '30s'
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "100k"
+        max-file: "20"

@@ -1,0 +1,8 @@
+#!/usr/bin/with-contenv /bin/bash
+tinc --pidfile=/var/run/tinc.${TINC_NETWORK}.pid dump reachable nodes || exit 1
+if [[ ! -z "${TINC_MASTER}" ]]; then
+    ping -c 5 ${TINC_MASTER} > /dev/null; exitcode=$?
+    [[ ${exitcode} -eq 0 ]] && echo "Pinging ${TINC_MASTER} succeeded." || \
+        echo "Pinging ${TINC_MASTER} failed."
+    exit ${exitcode}
+fi
