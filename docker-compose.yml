@@ -2,7 +2,7 @@ version: '3.3'
 
 services:
   tinc:
-    image: azmo/docker-tinc
+    image: azmo/tinc
     build:
       context: .
     hostname: tinc
