@@ -12,5 +12,3 @@ COPY bin/00-link-tinc-files-per-host.sh /etc/cont-init.d/
 COPY bin/01-create-users-fix-permissions.sh /etc/cont-init.d/
 COPY bin/tinc.sh /etc/services.d/tincd/run
 COPY bin/healthcheck.sh /etc/services.d/tincd/healthcheck
-
-ENTRYPOINT ["/init"]
