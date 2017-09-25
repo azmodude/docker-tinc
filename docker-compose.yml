@@ -16,6 +16,9 @@ services:
       TINC_NETWORK: ${TINC_NETWORK}
       TINC_HOSTNAME: ${TINC_HOSTNAME}
     network_mode: ${TINC_NETWORK_MODE:-host}
+    dns:
+      - ${TINC_DNS_PRIMARY:-8.8.8.8}
+      - ${TINC_DNS_SECONDARY:-8.8.4.4}
     cap_add:
       - NET_ADMIN
     ulimits:
