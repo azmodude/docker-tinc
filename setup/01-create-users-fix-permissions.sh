@@ -6,4 +6,4 @@ groupadd -g "${RUN_GID}" "${RUN_GROUP}" || true && \
     -u "${RUN_UID}" "${RUN_USER}" || true
 >&2 echo "Fixing/Setting permissions."
 chown -R "${RUN_USER}":"${RUN_GROUP}" /etc/tinc/"${TINC_NETWORK}"
-chmod 700 /etc/tinc/$"{TINC_NETWORK}"
+chmod 700 /etc/tinc/"${TINC_NETWORK}"
