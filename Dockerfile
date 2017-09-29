@@ -8,7 +8,7 @@ RUN echo "deb http://deb.debian.org/debian experimental main" >> /etc/apt/source
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-COPY bin/00-link-tinc-files-per-host.sh /etc/cont-init.d/
-COPY bin/01-create-users-fix-permissions.sh /etc/cont-init.d/
+COPY setup/00-link-tinc-files-per-host.sh /etc/cont-init.d/
+COPY setup/01-create-users-fix-permissions.sh /etc/cont-init.d/
 COPY bin/tinc.sh /etc/services.d/tincd/run
-COPY bin/healthcheck.sh /etc/services.d/tincd/healthcheck
+COPY healthcheck/healthcheck.sh /etc/services.d/tincd/healthcheck
