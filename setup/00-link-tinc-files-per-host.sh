@@ -2,8 +2,8 @@
 set -e
 
 [[ -z "${TINC_HOSTNAME}" ]] && \
-    echo "[$(basename $0)] TINC_HOSTNAME not defined." && \
-    echo "[$(basename $0)] tinc will fail to startup as configuration files are missing." && \
+    echo "[$(basename $0)] TINC_HOSTNAME not defined" && \
+    echo "[$(basename $0)] tinc will fail to startup as configuration files are missing" && \
     exit 1
 
 [ -e /etc/tinc/"${TINC_NETWORK}" ] || mkdir -p /etc/tinc/"${TINC_NETWORK}"
