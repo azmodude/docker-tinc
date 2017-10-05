@@ -30,6 +30,7 @@ services:
     restart: unless-stopped
     volumes:
       - ./${TINC_NETWORK}:/etc/tinc/${TINC_NETWORK}-config
+      - /etc/localtime:/etc/localtime:ro
     healthcheck:
       test: ${TINC_HEALTHCHECK}
       interval: '60s'
