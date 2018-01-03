@@ -11,6 +11,9 @@ all: build push
 up:
 	sed -i 's/^TINC_HOSTNAME=.*$//TINC_HOSTNAME=$(shell hostname -s)/' .env
 	sudo docker-compose up -d
+up-fg:
+	sed -i 's/^TINC_HOSTNAME=.*$//TINC_HOSTNAME=$(shell hostname -s)/' .env
+	sudo docker-compose up
 down:
 	sudo docker-compose down
 restart: down up
