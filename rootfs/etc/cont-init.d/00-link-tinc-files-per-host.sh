@@ -7,7 +7,8 @@ set -e
     exit 1
 
 [ -e /etc/tinc/"${TINC_NETWORK}" ] || mkdir -p /etc/tinc/"${TINC_NETWORK}"
-find /etc/tinc/"${TINC_NETWORK}"-config/configs/"${TINC_HOSTNAME}" -mindepth 1 -maxdepth 3 | while read -r filename; do
+find /etc/tinc/"${TINC_NETWORK}"-config/configs/"${TINC_HOSTNAME}" \
+    -mindepth 1 -maxdepth 3 | while read -r filename; do
     destination=/etc/tinc/"${TINC_NETWORK}"/$(basename "${filename}")
     cp "${filename}" "${destination}"
 done
