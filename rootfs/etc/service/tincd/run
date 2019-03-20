@@ -1,0 +1,4 @@
+#!/bin/bash
+
+tincd -n "${TINC_NETWORK}" --config="/etc/tinc/${TINC_NETWORK}" \
+    --no-detach --mlock --user=tincd --debug=${TINC_DEBUG_LEVEL}
