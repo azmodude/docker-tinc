@@ -5,11 +5,11 @@ services:
     image: azmo/tinc
     build:
       context: .
+      args:
+        TINC_VERSION: ${TINC_VERSION}
     hostname: tinc
     environment:
-      RUN_USER: ${TINC_RUN_USER}
       RUN_UID: ${TINC_RUN_UID}
-      RUN_GROUP: ${TINC_RUN_GROUP}
       RUN_GID: ${TINC_RUN_GID}
       TINC_DEBUG_LEVEL: ${TINC_DEBUG_LEVEL}
       TINC_MASTER: ${TINC_MASTER}
